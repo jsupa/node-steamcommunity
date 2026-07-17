@@ -30,10 +30,10 @@ SteamCommunity.prototype.getSteamUser = function(id, callback) {
 				return;
 			}
 
-			// Try and find custom URL from redirect
+			// Try and find custom URL from the final URL after redirects
 			var customurl = null;
-			if(response.request.redirects && response.request.redirects.length) {
-				var match = response.request.redirects[0].redirectUri.match(/https?:\/\/steamcommunity\.com\/id\/([^/])+\/\?xml=1/);
+			if(response.url) {
+				var match = response.url.match(/https?:\/\/steamcommunity\.com\/id\/([^\/]+)\/\?xml=1/);
 				if(match) {
 					customurl = match[1];
 				}

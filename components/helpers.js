@@ -1,4 +1,12 @@
-const request = require('request');
+const {Impit} = require('impit');
+
+var _impit = null;
+function getImpit() {
+	if (!_impit) {
+		_impit = new Impit({"timeout": 30000});
+	}
+	return _impit;
+}
 const SteamID = require('steamid');
 const xml2js  = require('xml2js');
 
@@ -82,13 +90,13 @@ exports.resolveVanityURL = function(url, callback) {
 		url = "https://steamcommunity.com/id/" + url;
 	}
 
-	// Make request to get XML data
-	request(url + "/?xml=1", function(err, response, body) {
-		if (err) {
-			callback(err);
-			return;
+	// Make request to get XML data using impit
+	getImpit().fetch(url + "/?xml=1").then(function(response) {
+		if (!response.ok) {
+			throw new Error("HTTP error " + response.status);
 		}
-
+		return response.text();
+	}).then(function(body) {
 		// Parse XML data returned from Steam into an object
 		new xml2js.Parser().parseString(body, (err, parsed) => {
 			if (err) {
@@ -106,6 +114,8 @@ exports.resolveVanityURL = function(url, callback) {
 
 			callback(null, {"vanityURL": vanityURL, "steamID": steamID64});
 		});
+	}).catch(function(err) {
+		callback(err);
 	});
 };
 
