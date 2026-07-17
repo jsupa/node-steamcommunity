@@ -1,8 +1,14 @@
 # Steam Community for Node.js
+
+> **Fork** of [DoctorMcKay/node-steamcommunity](https://github.com/DoctorMcKay/node-steamcommunity) — all credit to [Alex Corn (DoctorMcKay)](https://www.doctormckay.com) for the original library.
+>
+> **Forked repo:** [jsupa/node-steamcommunity](https://github.com/jsupa/node-steamcommunity)
+>
+> This fork replaces the deprecated `request` HTTP library with [`impit`](https://npmjs.com/package/impit) and adds TypeScript definitions, SOCKS proxy support, and Node.js 18+ compatibility.
+
 [![npm version](https://img.shields.io/npm/v/steamcommunity.svg)](https://npmjs.com/package/steamcommunity)
 [![npm downloads](https://img.shields.io/npm/dm/steamcommunity.svg)](https://npmjs.com/package/steamcommunity)
 [![license](https://img.shields.io/npm/l/steamcommunity.svg)](https://github.com/DoctorMcKay/node-steamcommunity/blob/master/LICENSE)
-[![paypal](https://img.shields.io/badge/paypal-donate-yellow.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=N36YVAT42CZ4G&item_name=node%2dsteamcommunity&currency_code=USD)
 
 This module provides an easy interface for the Steam Community website. This module can be used to simply login to
 steamcommunity.com for use with other libraries, or to interact with steamcommunity.com.
@@ -11,7 +17,7 @@ steamcommunity.com for use with other libraries, or to interact with steamcommun
 requests and bug reports. Instead, post in the [dedicated forum](https://dev.doctormckay.com/forum/8-node-steamcommunity/).
 Such issues may be ignored!**
 
-# 🔄 v3.51.0 — Migration to impit
+# 🔄 v4.0.0 — Migration to impit
 
 The deprecated `request` package has been replaced with **[impit](https://npmjs.com/package/impit)**, a modern HTTP library with native fetch API, browser TLS fingerprint emulation, and built-in SOCKS/HTTP proxy support.
 
